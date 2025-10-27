@@ -16,7 +16,14 @@ app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
 app.get('/', (req,res) => {
-    res.send('Hello, World!');
+    const locals ={
+        title: "Home Page",
+        description: "This is the home page description"
+    }
+    //if you want to pass more data to the index.ejs, you can add more properties to the locals object examples:
+    // {locals, user: req.user, items: itemList}
+    //since we are only passing locals for now, we can just pass locals directly
+    res.render('index', locals);
 });
 
 app.listen(port, () => {
